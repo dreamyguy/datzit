@@ -61,6 +61,18 @@ const RootQuery = new GraphQLObjectType({
         return axios.get(`http://localhost:${PORT_JSON_SERVER}/users/${args.id}`)
         .then(resp => resp.data); // because 'axios' returns a 'data' obj
       }
+    },
+    company: {
+      type: CompanyType,
+      args: {
+        id: {
+          type: GraphQLString
+        }
+      },
+      resolve(parentValue, args) {
+        return axios.get(`http://localhost:${PORT_JSON_SERVER}/companies/${args.id}`)
+        .then(resp => resp.data); // because 'axios' returns a 'data' obj
+      }
     }
   }
 });
