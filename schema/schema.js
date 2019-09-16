@@ -10,6 +10,21 @@ const {
 } = graphql;
 
 // Define types
+const CompanyType = new GraphQLObjectType({
+  name: 'Company',
+  fields: {
+    id: {
+      type: GraphQLString
+    },
+    name: {
+      type: GraphQLString
+    },
+    description: {
+      type: GraphQLString
+    },
+  }
+});
+
 const UserType = new GraphQLObjectType({
   name: 'User',
   fields: {
@@ -22,6 +37,13 @@ const UserType = new GraphQLObjectType({
     age: {
       type: GraphQLInt
     },
+    company: {
+      type: CompanyType,
+      resolve(parentValue, args) {
+        return axios.get(`http://localhost:${PORT_JSON_SERVER}/companies/${parentValue.companyId}`)
+        .then(resp => resp.data); // because 'axios' returns a 'data' obj
+      }
+    }
   }
 });
 
@@ -36,7 +58,6 @@ const RootQuery = new GraphQLObjectType({
         }
       },
       resolve(parentValue, args) {
-        // return _.find(users, { id: args.id });
         return axios.get(`http://localhost:${PORT_JSON_SERVER}/users/${args.id}`)
         .then(resp => resp.data); // because 'axios' returns a 'data' obj
       }
