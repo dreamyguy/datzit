@@ -8,6 +8,7 @@ const {
   GraphQLInt,
   GraphQLSchema,
   GraphQLList,
+  GraphQLNonNull
 } = graphql;
 
 // Define types
@@ -85,6 +86,64 @@ const RootQuery = new GraphQLObjectType({
   }
 });
 
+const mutation = new GraphQLObjectType({
+  name: 'Mutation',
+  fields: {
+    addUser: {
+      type: UserType,
+      args: {
+        firstName: {
+          type: new GraphQLNonNull(GraphQLString)
+        },
+        age: {
+          type: new GraphQLNonNull(GraphQLInt)
+        },
+        companyId: {
+          type: GraphQLString
+        },
+      },
+      resolve(parentValue, { firstName, age }) {
+        return axios.post(`http://localhost:${PORT_JSON_SERVER}/users`, { firstName, age })
+        .then(resp => resp.data); // because 'axios' returns a 'data' obj
+      }
+    },
+    deleteUser: {
+      type: UserType,
+      args: {
+        id: {
+          type: new GraphQLNonNull(GraphQLString)
+        }
+      },
+      resolve(parentValue, { id }) {
+        return axios.delete(`http://localhost:${PORT_JSON_SERVER}/users/${id}`)
+        .then(resp => resp.data); // because 'axios' returns a 'data' obj
+      }
+    },
+    editUser: {
+      type: UserType,
+      args: {
+        id: {
+          type: new GraphQLNonNull(GraphQLString)
+        },
+        firstName: {
+          type: GraphQLString
+        },
+        age: {
+          type: GraphQLInt
+        },
+        companyId: {
+          type: GraphQLString
+        },
+      },
+      resolve(parentValue, args) {
+        return axios.patch(`http://localhost:${PORT_JSON_SERVER}/users/${args.id}`, args)
+        .then(resp => resp.data); // because 'axios' returns a 'data' obj
+      }
+    },
+  }
+})
+
 module. exports = new GraphQLSchema({
-  query: RootQuery
+  query: RootQuery,
+  mutation
 });
