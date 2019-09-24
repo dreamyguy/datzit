@@ -26,18 +26,31 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "json:server": "json-server --watch data/db.json",
-    "dev": "nodemon server/serverGQL.js"
+    "import:mongodb": "mongoimport --db gitlogg-api-development --drop --collection commits --type json --file data/gitlogg.json --jsonArray --stopOnError",
+    "server:mongodbInit": "mongod",
+    "server:mongodb": "node server/mongodb/server.js",
+    "server:json": "json-server --watch server/json/db.json",
+    "server:graphql": "nodemon server/graphql/server.js"
   },
   "dependencies": {
     "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
-    "graphql": "^14.5.4",
+    "glob": "^7.1.4",
+    "graphql": "^14.5.7",
     "json-server": "^0.15.1",
-    "nodemon": "^1.19.2"
+    "method-override": "^3.0.0",
+    "mongodb": "^3.3.2",
+    "mongoose": "^5.7.1",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.2",
+    "nunjucks": "^3.2.0",
+    "serve-favicon": "^2.5.0"
   },
   "engines": {
-    "node": ">=v10.16.3"
+    "node": ">=v12.4.0"
   }
 }

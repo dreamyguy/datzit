@@ -1,6 +1,6 @@
 const graphql = require('graphql');
 const axios = require('axios');
-const { PORT_JSON_SERVER } = require('./../config');
+const { PORT_JSON_SERVER } = require('./../../config');
 
 const {
   GraphQLObjectType,
