@@ -30,7 +30,9 @@
     "server:mongodbInit": "mongod",
     "server:mongodb": "node server/mongodb/server.js",
     "server:json": "json-server --watch server/json/db.json",
-    "server:graphql": "nodemon server/graphql/server.js"
+    "server:graphql": "nodemon server/graphql/server.js",
+    "test:e2e:open": "cypress open --config fileServerFolder=tests/e2e/cypress",
+    "test:e2e:run": "cypress run --config fileServerFolder=tests/e2e/cypress"
   },
   "dependencies": {
     "axios": "^0.19.0",
@@ -52,5 +54,8 @@
   },
   "engines": {
     "node": ">=v12.4.0"
+  },
+  "devDependencies": {
+    "cypress": "^3.4.1"
   }
 }
