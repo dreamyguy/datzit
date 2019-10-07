@@ -10,6 +10,6 @@ app.use('/graphql', expressGraphQL({
   graphiql: true
 }));
 
-app.listen(config.PORT_EXPRESS_APP, () => {
-  console.log(`Express listening for 'graphql' on port ${config.PORT_EXPRESS_GQL_APP} 🚀`);
+app.listen(config.PORT_EXPRESS_GQL_APP, () => {
+  console.log(`Express listening for 'graphql' on ${config.URL_BASE_DEV}${config.PORT_EXPRESS_GQL_APP}/graphql 🚀`);
 });

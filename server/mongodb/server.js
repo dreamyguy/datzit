@@ -3,6 +3,7 @@ var apicache = require('apicache');
 var glob = require('glob');
 var mongoose = require('mongoose');
 var config = require('./config/config');
+var configGlobal = require('./../../config');
 
 mongoose.connect(config.db, {
   useUnifiedTopology: true,
@@ -24,5 +25,5 @@ app.use(cache('5 minutes'))
 module.exports = require('./config/express')(app, config);
 
 app.listen(config.port, function () {
-  console.log(`Express listening for 'mongodb' on port ${config.port} 🚀`);
+  console.log(`Express listening for 'mongodb' on ${configGlobal.URL_BASE_DEV}${config.port} 🚀`);
 });

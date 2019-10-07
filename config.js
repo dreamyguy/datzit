@@ -3,4 +3,5 @@ module.exports = {
   PORT_EXPRESS_GQL_APP: 4000,
   PORT_EXPRESS_MONGODB_APP: 5000,
   PORT_REACT_APP: 6666,
+  URL_BASE_DEV: 'http://localhost:',
 }

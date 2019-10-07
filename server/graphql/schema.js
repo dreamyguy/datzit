@@ -1,6 +1,20 @@
 const graphql = require('graphql');
 const axios = require('axios');
-const { PORT_JSON_SERVER } = require('./../../config');
+const {
+  PORT_JSON_SERVER,
+  PORT_EXPRESS_MONGODB_APP,
+  URL_BASE_DEV
+} = require('./../../config');
+const serverMode = 'mongodb'; // json | mongodb
+const graphQLRequestRoot = () => {
+  let url = '';
+  if (serverMode === 'mongodb') {
+    url = `${URL_BASE_DEV}${PORT_EXPRESS_MONGODB_APP}/api`;
+  } else if (serverMode === 'json') {
+    url = `${URL_BASE_DEV}${PORT_JSON_SERVER}`;
+  }
+  return url;
+};
 
 const {
   GraphQLObjectType,
@@ -27,7 +41,7 @@ const CompanyType = new GraphQLObjectType({
     users: {
       type: new GraphQLList(UserType),
       resolve(parentValue, args) {
-        return axios.get(`http://localhost:${PORT_JSON_SERVER}/companies/${parentValue.id}/users`)
+        return axios.get(`${graphQLRequestRoot()}/companies/${parentValue.id}/users`)
         .then(resp => resp.data); // because 'axios' returns a 'data' obj
       }
     }
@@ -49,7 +63,7 @@ const UserType = new GraphQLObjectType({
     company: {
       type: CompanyType,
       resolve(parentValue, args) {
-        return axios.get(`http://localhost:${PORT_JSON_SERVER}/companies/${parentValue.companyId}`)
+        return axios.get(`${graphQLRequestRoot()}/companies/${parentValue.companyId}`)
         .then(resp => resp.data); // because 'axios' returns a 'data' obj
       }
     }
@@ -67,7 +81,7 @@ const RootQuery = new GraphQLObjectType({
         }
       },
       resolve(parentValue, args) {
-        return axios.get(`http://localhost:${PORT_JSON_SERVER}/users/${args.id}`)
+        return axios.get(`${graphQLRequestRoot()}/users/${args.id}`)
         .then(resp => resp.data); // because 'axios' returns a 'data' obj
       }
     },
@@ -79,7 +93,7 @@ const RootQuery = new GraphQLObjectType({
         }
       },
       resolve(parentValue, args) {
-        return axios.get(`http://localhost:${PORT_JSON_SERVER}/companies/${args.id}`)
+        return axios.get(`${graphQLRequestRoot()}/companies/${args.id}`)
         .then(resp => resp.data); // because 'axios' returns a 'data' obj
       }
     }
@@ -103,7 +117,7 @@ const mutation = new GraphQLObjectType({
         },
       },
       resolve(parentValue, { firstName, age }) {
-        return axios.post(`http://localhost:${PORT_JSON_SERVER}/users`, { firstName, age })
+        return axios.post(`${graphQLRequestRoot()}/users`, { firstName, age })
         .then(resp => resp.data); // because 'axios' returns a 'data' obj
       }
     },
@@ -115,7 +129,7 @@ const mutation = new GraphQLObjectType({
         }
       },
       resolve(parentValue, { id }) {
-        return axios.delete(`http://localhost:${PORT_JSON_SERVER}/users/${id}`)
+        return axios.delete(`${graphQLRequestRoot()}/users/${id}`)
         .then(resp => resp.data); // because 'axios' returns a 'data' obj
       }
     },
@@ -136,7 +150,7 @@ const mutation = new GraphQLObjectType({
         },
       },
       resolve(parentValue, args) {
-        return axios.patch(`http://localhost:${PORT_JSON_SERVER}/users/${args.id}`, args)
+        return axios.patch(`${graphQLRequestRoot()}/users/${args.id}`, args)
         .then(resp => resp.data); // because 'axios' returns a 'data' obj
       }
     },
