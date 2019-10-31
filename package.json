@@ -25,8 +25,11 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "import:mongodb": "mongoimport --db gitlogg-api-development --drop --collection commits --type json --file data/gitlogg.json --jsonArray --stopOnError",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
     "server:mongodbInit": "mongod",
     "server:mongodb": "node server/mongodb/server.js",
     "server:json": "json-server --watch server/json/db.json",
@@ -51,12 +54,30 @@
     "morgan": "^1.9.1",
     "nodemon": "^1.19.2",
     "nunjucks": "^3.2.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-scripts": "3.2.0",
     "serve-favicon": "^2.5.0"
-  },
-  "engines": {
-    "node": ">=v12.4.0"
   },
   "devDependencies": {
     "cypress": "^3.4.1"
+  },
+  "engines": {
+    "node": ">=v12.13.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
