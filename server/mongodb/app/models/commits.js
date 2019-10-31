@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
-var CommitSchema = new Schema({
+var CommitsSchema = new Schema({
   repository: String,
   commit_nr: Number,
   commit_hash: String,
@@ -30,4 +30,4 @@ var CommitSchema = new Schema({
   impact: Number
 });
 
-mongoose.model('Commit', CommitSchema);
+mongoose.model('commits', CommitsSchema);
