@@ -26,6 +26,92 @@ const {
 } = graphql;
 
 // Define types
+const CommitType = new GraphQLObjectType({
+  name: 'Commit',
+  fields: () => ({
+    repository: {
+      type: GraphQLString
+    },
+    commit_nr: {
+      type: GraphQLInt
+    },
+    commit_hash: {
+      type: GraphQLString
+    },
+    author_name: {
+      type: GraphQLString
+    },
+    author_email: {
+      type: GraphQLString
+    },
+    author_date: {
+      type: GraphQLString
+    },
+    author_date_relative: {
+      type: GraphQLString
+    },
+    author_date_unix_timestamp: {
+      type: GraphQLString
+    },
+    author_date_iso_8601: {
+      type: GraphQLString
+    },
+    subject: {
+      type: GraphQLString
+    },
+    subject_sanitized: {
+      type: GraphQLString
+    },
+    stats: {
+      type: GraphQLString
+    },
+    time_hour: {
+      type: GraphQLInt
+    },
+    time_minutes: {
+      type: GraphQLInt
+    },
+    time_seconds: {
+      type: GraphQLInt
+    },
+    time_gmt: {
+      type: GraphQLString
+    },
+    date_day_week: {
+      type: GraphQLString
+    },
+    date_month_day: {
+      type: GraphQLInt
+    },
+    date_month_name: {
+      type: GraphQLString
+    },
+    date_month_number: {
+      type: GraphQLInt
+    },
+    date_year: {
+      type: GraphQLString
+    },
+    date_iso_8601: {
+      type: GraphQLString
+    },
+    files_changed: {
+      type: GraphQLInt
+    },
+    insertions: {
+      type: GraphQLInt
+    },
+    deletions: {
+      type: GraphQLInt
+    },
+    impact: {
+      type: GraphQLInt
+    }
+  })
+});
+
+const CommitListType = new GraphQLList(CommitType);
+
 const CompanyType = new GraphQLObjectType({
   name: 'Company',
   fields: () => ({
@@ -94,6 +180,30 @@ const RootQuery = new GraphQLObjectType({
       },
       resolve(parentValue, args) {
         return axios.get(`${graphQLRequestRoot()}/companies/${args.id}`)
+        .then(resp => resp.data); // because 'axios' returns a 'data' obj
+      }
+    },
+    commitByHash: {
+      type: CommitType,
+      args: {
+        commit_hash: {
+          type: GraphQLString
+        },
+      },
+      resolve(parentValue, args) {
+        return axios.get(`${graphQLRequestRoot()}/commit_hash/${args.commit_hash}`)
+        .then(resp => resp.data[0]); // because 'axios' returns a 'data' obj
+      }
+    },
+    commitsByRepository: {
+      type: CommitListType,
+      args: {
+        repository: {
+          type: GraphQLString
+        },
+      },
+      resolve(parentValue, args) {
+        return axios.get(`${graphQLRequestRoot()}/repository/${args.repository}`)
         .then(resp => resp.data); // because 'axios' returns a 'data' obj
       }
     }
