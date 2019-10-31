@@ -28,12 +28,13 @@
     "import:mongodb": "mongoimport --db gitlogg-api-development --drop --collection commits --type json --file data/gitlogg.json --jsonArray --stopOnError",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server:mongodbInit": "mongod",
     "server:mongodb": "node server/mongodb/server.js",
     "server:json": "json-server --watch server/json/db.json",
     "server:graphql": "nodemon server/graphql/server.js",
+    "testTravis": "jest",
+    "test": "jest --verbose --watch",
     "test:e2e:open": "cypress open --config fileServerFolder=tests/e2e/cypress",
     "test:e2e:run": "cypress run --config fileServerFolder=tests/e2e/cypress"
   },
@@ -60,6 +61,9 @@
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "babel-jest": "^24.9.0",
     "cypress": "^3.4.1"
   },
   "engines": {
