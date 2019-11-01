@@ -1,13 +1,13 @@
-var arrayAuthorsStats = require('../helpers/arrayAuthorsStats');
-var arrayByKey = require('../helpers/arrayByKey');
-var arrayByKeyFiltered = require('../helpers/arrayByKeyFiltered');
-var arrayByKeyFilteredGreaterThan = require('../helpers/arrayByKeyFilteredGreaterThan');
-var arraysMerge = require('../helpers/arraysMerge');
-var daysBetween = require('../helpers/daysBetween');
-var daysSince = require('../helpers/daysSince');
-var groupByDuplicatesInArray = require('../helpers/groupByDuplicatesInArray');
-var itemsSum = require('../helpers/itemsSum');
-var totalSum = require('../helpers/totalSum');
+var arrayAuthorsStats = require('../../helpers/arrayAuthorsStats');
+var arrayByKey = require('../../helpers/arrayByKey');
+var arrayByKeyFiltered = require('../../helpers/arrayByKeyFiltered');
+var arrayByKeyFilteredGreaterThan = require('../../helpers/arrayByKeyFilteredGreaterThan');
+var arraysMerge = require('../../helpers/arraysMerge');
+var daysBetween = require('../../helpers/daysBetween');
+var daysSince = require('../../helpers/daysSince');
+var groupByDuplicatesInArray = require('../../helpers/groupByDuplicatesInArray');
+var itemsSum = require('../../helpers/itemsSum');
+var totalSum = require('../../helpers/totalSum');
 
 // Get global stats and output it on a dedicated array, with options
 // ------------------------------------------------------------

@@ -1,0 +1,96 @@
+@import "./1_tools/variables";
+
+// generic
+
+html,
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+// layout
+
+body {
+  * {
+    box-sizing: border-box;
+  }
+  position: relative;
+  background-color: $cl-petroleum;
+  color: $cl-white;
+  margin: 0;
+  padding: 0;
+  @extend .font-montserrat-regular;
+}
+
+header,
+footer {
+  background-color: $cl-tar;
+  display: flex;
+  justify-content: center;
+  padding: $gutter-size/2 0;
+  width: 100%;
+}
+
+header {
+  border-bottom: $border-layout;
+  text-shadow: 1px 1px 0 $cl-black;
+  h2 {
+    display: none;
+    @include media-breakpoint-up(sm) {
+      display: block;
+    }
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  border-top: $border-layout;
+  font-size: 15px;
+  color: $cl-gray;
+}
+
+.logo {
+  background-size: cover;
+  background-image: url('#{$path-images}/moments-logo-header.png');
+  width: 57px; // 114 / 2
+  height: 36px; // 72 / 2
+  @include media-breakpoint-up(sm) {
+    margin-right: $gutter-size/2;
+  }
+}
+
+.content {
+  position: relative;
+  max-width: 1234px;
+  margin: 0 auto;
+  padding-bottom: $bottom-spacing;
+}
+
+// colorful bar
+
+.bar,
+.bar-item {
+  font-size: 0;
+}
+.bar {
+  margin: 0;
+  padding: 0;
+}
+.bar-item {
+  display: inline-block;
+  height: 5px;
+  width: 10%
+}
+
+// section copyright
+
+.copyright-mit {
+  font-size: $small-font-size;
+}

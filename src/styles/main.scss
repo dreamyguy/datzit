@@ -1,0 +1,50 @@
+// this file compiles and concatenates all the CSS
+@charset 'utf-8';
+
+/* --------------------------------------------
+::: Resets. tools, variables and settings :::::
+----------------------------------------------- */
+
+// Normalize browser defaults
+// @import '../../node_modules/normalize.css/normalize.css';
+
+@import '1_tools/functions';
+@import '1_tools/colors';
+@import '1_tools/variables';
+@import '1_tools/mixins';
+@import '1_tools/helpers';
+@import '1_tools/bootstrap-grid-settings';
+
+/* --------------------------------------------
+::: Base ::::::::::::::::::::::::::::::::::::::
+----------------------------------------------- */
+
+html {
+  height: 100%;
+  font-size: $base-font-size;
+}
+// @import '2_base/fonts';
+// @import '2_base/images';
+// @import '2_base/layout';
+// @import '2_base/radio-buttons';
+// @import '2_base/input';
+// @import '2_base/typography';
+// @import '2_base/video';
+
+/* --------------------------------------------
+::: Blocks ::::::::::::::::::::::::::::::::::::
+----------------------------------------------- */
+
+@import '3_blocks/sections';
+
+/* --------------------------------------------
+::: Grid ::::::::::::::::::::::::::::::::::::::
+----------------------------------------------- */
+
+// Default bootstrap grid. This can be configured under 'tools'
+// @import '../../node_modules/bootstrap-4-grid/scss/grid';
+
+/* --------------------------------------------
+::: External libraries ::::::::::::::::::::::::
+----------------------------------------------- */
+@import '../components/time/ReactAddToCalendar.scss';

@@ -1,10 +1,10 @@
-var arrayByKey = require('../helpers/arrayByKey');
-var daysBetween = require('../helpers/daysBetween');
-var daysSince = require('../helpers/daysSince');
-var groupByDuplicatesInArray = require('../helpers/groupByDuplicatesInArray');
-var itemsSum = require('../helpers/itemsSum');
-var sortArrayByKey = require('../helpers/sortArrayByKey');
-var totalSum = require('../helpers/totalSum');
+var arrayByKey = require('../../helpers/arrayByKey');
+var daysBetween = require('../../helpers/daysBetween');
+var daysSince = require('../../helpers/daysSince');
+var groupByDuplicatesInArray = require('../../helpers/groupByDuplicatesInArray');
+var itemsSum = require('../../helpers/itemsSum');
+var sortArrayByKey = require('../../helpers/sortArrayByKey');
+var totalSum = require('../../helpers/totalSum');
 
 // Get repositories stats and output it on a dedicated array, with options
 // ------------------------------------------------------------
