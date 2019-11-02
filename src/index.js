@@ -1,39 +1,34 @@
-// Import dependencies
 import React from 'react';
-import ReactDom from 'react-dom';
-import { HashRouter, Switch, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
-// Import utils
+import ReactDOM from 'react-dom';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {Provider} from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-// Import styles
-import './styles/main.scss';
-// Import components
-import App from './components/App';
+import store from './redux/store/store';
+
 // Import pages
+import App from './components/App';
 import About from './pages/About';
 import Home from './pages/Home';
 import StatsGlobal from './pages/StatsGlobal';
 import StatsRepo from './pages/StatsRepo';
 import StatsContributors from './pages/StatsContributors';
 
-// Import store
-import initStore from './store/store';
+// Import styles
+import './styles/main.scss';
 
-const store = initStore();
-
-ReactDom.render((
+ReactDOM.render((
   <Provider store={store}>
-    <HashRouter basename="/">
+    <BrowserRouter basename="/">
       <App>
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route exact path="/about" component={About}/>
-          <Route path="/stats-global" component={StatsGlobal}/>
-          <Route path="/stats-repo/:repoName/" component={StatsRepo}/>
-          <Route path="/stats-contributors" component={StatsContributors}/>
+          <Route exact path="/stats-global" component={StatsGlobal}/>
+          <Route exact path="/stats-repo/:repoName/" component={StatsRepo}/>
+          <Route exact path="/stats-contributors" component={StatsContributors}/>
         </Switch>
       </App>
-    </HashRouter>
+    </BrowserRouter>
   </Provider>
 ), document.getElementById('root'));
 
