@@ -4,7 +4,7 @@ const {
   PORT_JSON_SERVER,
   PORT_EXPRESS_MONGODB_APP,
   URL_BASE_DEV
-} = require('./../../config');
+} = require('./../../src/config');
 const serverMode = 'mongodb'; // json | mongodb
 const graphQLRequestRoot = () => {
   let url = '';

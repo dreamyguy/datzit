@@ -1,11 +1,11 @@
 var express = require('express'),
   router = express.Router(),
   mongoose = require('mongoose'),
-  arrayByKey = require('../../helpers/arrayByKey'),
-  arrayMaxMin = require('../../helpers/arrayMaxMin'),
-  arrayAuthorsStats = require('../../helpers/arrayAuthorsStats'),
-  arrayGlobalStats = require('../../helpers/arrayGlobalStats'),
-  arrayRepositoriesStats = require('../../helpers/arrayRepositoriesStats'),
+  arrayByKey = require('./../helpers/arrayByKey'),
+  arrayMaxMin = require('./../helpers/arrayMaxMin'),
+  arrayAuthorsStats = require('./../helpers/arrayAuthorsStats'),
+  arrayGlobalStats = require('./../helpers/arrayGlobalStats'),
+  arrayRepositoriesStats = require('./../helpers/arrayRepositoriesStats'),
   Commits = mongoose.model('commits');
 
 module.exports = function (app) {

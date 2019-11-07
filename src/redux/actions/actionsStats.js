@@ -1,9 +1,9 @@
 /* eslint max-params: ["error", 6] */
 
 import axios from 'axios';
+import { PORT_EXPRESS_MONGODB_APP, URL_BASE_DEV } from './../../config';
 
-const SERVER = 'localhost:5000'; // local
-const API_ROOT = `http://${SERVER}/api`;
+const API_ROOT = `${URL_BASE_DEV}${PORT_EXPRESS_MONGODB_APP}/api`;
 
 // An object with global stats
 export function fetchStatsGlobal() {

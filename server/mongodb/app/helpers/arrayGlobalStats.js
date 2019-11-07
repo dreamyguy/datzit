@@ -1,13 +1,13 @@
-var arrayAuthorsStats = require('../../helpers/arrayAuthorsStats');
-var arrayByKey = require('../../helpers/arrayByKey');
-var arrayByKeyFiltered = require('../../helpers/arrayByKeyFiltered');
-var arrayByKeyFilteredGreaterThan = require('../../helpers/arrayByKeyFilteredGreaterThan');
-var arraysMerge = require('../../helpers/arraysMerge');
-var daysBetween = require('../../helpers/daysBetween');
-var daysSince = require('../../helpers/daysSince');
-var groupByDuplicatesInArray = require('../../helpers/groupByDuplicatesInArray');
-var itemsSum = require('../../helpers/itemsSum');
-var totalSum = require('../../helpers/totalSum');
+var arrayAuthorsStats = require('./arrayAuthorsStats');
+var arrayByKey = require('./arrayByKey');
+var arrayByKeyFiltered = require('./arrayByKeyFiltered');
+var arrayByKeyFilteredGreaterThan = require('./arrayByKeyFilteredGreaterThan');
+var arraysMerge = require('./arraysMerge');
+var daysBetween = require('./daysBetween');
+var daysSince = require('./daysSince');
+var groupByDuplicatesInArray = require('./groupByDuplicatesInArray');
+var itemsSum = require('./itemsSum');
+var totalSum = require('./totalSum');
 
 // Get global stats and output it on a dedicated array, with options
 // ------------------------------------------------------------

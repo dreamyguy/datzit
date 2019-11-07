@@ -1,6 +1,6 @@
-@import './../../../../../node_modules/bootstrap-4-grid/scss/grid.scss';
-@import './../../../shared/sass/2_base/variables';
-@import './../../../shared/sass/2_base/fonts';
+// @import './../../../../../node_modules/bootstrap-4-grid/scss/grid.scss';
+@import './../../../styles/2_base/variables';
+@import './../../../styles/2_base/fonts';
 
 .button {
   font-size: 18px; // this is crucial to give 'input' and 'button' the right size

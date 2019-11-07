@@ -1,7 +1,7 @@
 var path = require('path');
 var rootPath = path.normalize(__dirname + '/..');
 var env = process.env.NODE_ENV || 'development';
-var configGlobal = require('./../../../config');
+var { PORT_EXPRESS_MONGODB_APP } = require('./../../../src/config');
 
 var config = {
   development: {
@@ -9,7 +9,7 @@ var config = {
     app: {
       name: 'gitlogg-api'
     },
-    port: process.env.PORT || configGlobal.PORT_EXPRESS_MONGODB_APP,
+    port: process.env.PORT || PORT_EXPRESS_MONGODB_APP,
     db: 'mongodb://localhost/gitlogg-api-development'
   },
 
@@ -18,7 +18,7 @@ var config = {
     app: {
       name: 'gitlogg-api'
     },
-    port: process.env.PORT || configGlobal.PORT_EXPRESS_MONGODB_APP,
+    port: process.env.PORT || PORT_EXPRESS_MONGODB_APP,
     db: 'mongodb://localhost/gitlogg-api-test',
   },
 
@@ -27,7 +27,7 @@ var config = {
     app: {
       name: 'gitlogg-api'
     },
-    port: process.env.PORT || configGlobal.PORT_EXPRESS_MONGODB_APP,
+    port: process.env.PORT || PORT_EXPRESS_MONGODB_APP,
     db: 'mongodb://localhost/gitlogg-api-production',
   }
 };

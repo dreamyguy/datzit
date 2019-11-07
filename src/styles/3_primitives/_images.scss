@@ -1,3 +1,5 @@
+@import './../2_base/variables';
+
 img {
   display: inline-block;
   width: 100%;
@@ -13,10 +15,6 @@ img {
   background-repeat: no-repeat;
   height: 100%;
   background-size: cover;
-  // @todo: fix this!
-  // &.icon {
-  //   background-size: auto;
-  // }
 }
 
 // Image scaled by aspect ratio.
@@ -331,7 +329,7 @@ img {
       }
     }
   }
-  
+
   &__ratio-3-4 {
     padding-top: 133.33333333%;
 
@@ -484,7 +482,7 @@ img {
 
   &__ratio-9-21 {
     padding-top: 233.33333333%;
-    
+
     @include aspect-media(sm) {
       &--sm {
         @include aspect-value(233.33333333%);

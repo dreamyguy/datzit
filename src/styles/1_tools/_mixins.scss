@@ -1,56 +1,46 @@
-@import "variables";
-@import "functions";
+@import 'functions';
 
-// position mixin
+// ------------------------------------
+// Breakpoints
+// ------------------------------------
 
-$_positions: top,
-             bottom,
-             left,
-             right;
+// PS: this mixin hasn't been used yet, and probably won't be.
+// We're importing the default grid breakpoint helpers on our
+// 'bootstrap-grid-settings' override
+$breakpoints: (
+  // Small screen / phone
+  sm: 576,
+  // Medium screen / tablet
+  md: 768,
+  // Large screen / desktop
+  lg: 980,
+  // Extra large screen / wide desktop
+  xl: 1276
+) !default;
 
-@each $_pos in $_positions {
-  .gutter-#{nth($_pos, 1)} {
-    margin-#{nth($_pos, 1)}: $gutter-size;
-  }
-  .gutter-#{nth($_pos, 1)}-half {
-    margin-#{nth($_pos, 1)}: $gutter-size/2;
-  }
-  .gutter-#{nth($_pos, 1)}-double {
-    margin-#{nth($_pos, 1)}: $gutter-size*2;
-  }
-  .no-margin-#{nth($_pos, 1)} {
-    margin-#{nth($_pos, 1)}: 0;
-  }
-}
-
-// border line mixin
-
-@each $_pos in $_positions {
-  .line-#{nth($_pos, 1)} {
-    border-#{nth($_pos, 1)}: $default-border-size solid $cl-gray;
-  }
-}
-
-// ~ Margin & padding helper ~
-// See https://gist.github.com/dreamyguy/2fc16be42a01f21527c5a12bbb662f08
-// Usage:
-// Margin classes .m-[t|r|b|l]-[value]: margin-top [value]rem with px fallback.
-// Padding classes .p-[t|r|b|l][value]: padding-top [value]rem with px fallback.
-
-$sides: (top, bottom, left, right);
-$space-values: (2, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80, 90, 100, 120);
-
-@each $side in $sides {
-  @for $i from 1 through length($space-values) {
-
-    .m-#{str-slice($side, 0, 1)}-#{nth($space-values, $i)} {
-      margin-#{$side}: #{nth($space-values, $i)}px !important;
-      margin-#{$side}: rem-calc(nth($space-values, $i), $base-font-size) !important;
+@mixin breakpoint($label, $max: null) {
+  @if map-has-key($breakpoints, $label) {
+    $width: map-get($breakpoints, $label);
+    @if $max != null {
+      @media (max-width: rem-calc($width)) {
+        @content;
+      }
+    } @else {
+      @media (min-width: rem-calc($width)) {
+        @content;
+      }
     }
-
-    .p-#{str-slice($side, 0, 1)}-#{nth($space-values, $i)} {
-      padding-#{$side}: #{nth($space-values, $i)}px !important;
-      padding-#{$side}: rem-calc(nth($space-values, $i), $base-font-size) !important;
+  } @else if type-of($label) == 'number' {
+    @if $max != null {
+      @media screen and (max-width: rem-calc($label)) {
+        @content;
+      }
+    } @else {
+      @media screen and (min-width: rem-calc($label)) {
+        @content;
+      }
     }
+  } @else {
+    @warn '`#{$label} is not a valid key in `#{$breakpoints}`.';
   }
 }
