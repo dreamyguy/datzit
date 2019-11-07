@@ -22,7 +22,7 @@ class Sidebar extends Component {
       classes = '' // accepts CSS classNames as string
     } = this.props;
     return (
-      <div className={`sidebar font-myriadpro-regular${classes ? ' ' + classes : ''}`}>
+      <div className={`sidebar font-opensans-regular${classes ? ' ' + classes : ''}`}>
         <div className="sidebar__section">
           <ul>
             <li>
@@ -90,7 +90,7 @@ export default Sidebar;
 
 ### Sidebar
 ```html
-<div class="sidebar font-myriadpro-regular">
+<div class="sidebar font-opensans-regular">
   <div class="sidebar__section">
     <ul>
       <li>
